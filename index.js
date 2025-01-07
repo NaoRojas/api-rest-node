@@ -1,6 +1,8 @@
 const connectDB = require('./database/connection')
 const express = require('express')
 const cors = require('cors')
+const router = require('./routes/article')
+
 
 // Connect to MongoDB
 connectDB()
@@ -16,9 +18,8 @@ app.use(cors())
 app.use(express.json())
 
 // Create routes
-app.get('/test', (req, res) => {
-  res.send('Hello World')
-})
+
+app.use('/', router);
 
 // Create server and listen http requests
 app.listen(PORT, () => {
